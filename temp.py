@@ -132,6 +132,9 @@ def solve_poisson(N, use_4th_neumann=True):
     gfun = lambda x,y: 0.0
     qfun = lambda y: 0.0
     A, b = assemble_system(N, f, g_dirichlet=gfun, q_neumann=qfun, use_4th_neumann=use_4th_neumann)
+    plt.figure()
+    plt.imshow(b.reshape((N+1,N+1)), cmap='viridis')
+    plt.savefig('temp_b.png')
     plt.figure(figsize=(20,10))
     plt.imshow(A.toarray(), cmap='viridis')
     plt.colorbar()
